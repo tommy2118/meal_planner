@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Sidedish, type: :model do
+RSpec.describe SideDish, type: :model do
   context "Attributes" do
     it { is_expected.to have_attribute(:name) }
   end
