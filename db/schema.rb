@@ -11,9 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20151203021643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string   "name"
+    t.string   "unit_of_measure"
+    t.integer  "addable_id"
+    t.string   "addable_type"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "unit_of_measurement"
+  end
+
+  add_index "ingredients", ["addable_type", "addable_id"], name: "index_ingredients_on_addable_type_and_addable_id", using: :btree
+
+  create_table "meals", force: :cascade do |t|
+    t.datetime "date"
+    t.string   "main_course"
+    t.string   "side_dish"
+    t.string   "vegetable"
+    t.string   "kid_vegetable"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
 end
