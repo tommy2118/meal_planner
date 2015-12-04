@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151203183035) do
+ActiveRecord::Schema.define(version: 20151204163147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,29 +33,36 @@ ActiveRecord::Schema.define(version: 20151203183035) do
     t.boolean  "has_side",         default: false, null: false
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
+    t.integer  "meal_id"
   end
 
+  add_index "main_courses", ["meal_id"], name: "index_main_courses_on_meal_id", using: :btree
+
   create_table "meals", force: :cascade do |t|
-    t.datetime "date"
-    t.string   "main_course"
-    t.string   "side_dish"
-    t.string   "vegetable"
-    t.string   "kid_vegetable"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "date",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "side_dishes", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "meal_id"
   end
+
+  add_index "side_dishes", ["meal_id"], name: "index_side_dishes_on_meal_id", using: :btree
 
   create_table "vegetables", force: :cascade do |t|
     t.string   "name",         null: false
     t.boolean  "kid_friendly", null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "meal_id"
   end
 
+  add_index "vegetables", ["meal_id"], name: "index_vegetables_on_meal_id", using: :btree
+
+  add_foreign_key "side_dishes", "meals"
+  add_foreign_key "vegetables", "meals"
 end

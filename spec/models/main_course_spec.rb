@@ -10,6 +10,7 @@ RSpec.describe MainCourse, type: :model do
 
   context "References" do
     it { is_expected.to have_many(:ingredients) }
+    it { is_expected.to belong_to(:meal) }
   end
 
   context "Validations" do
