@@ -24,6 +24,7 @@ gem 'bootstrap-sass'
 gem 'haml-rails'
 gem 'sass'
 gem 'sass-rails'
+gem 'turbolinks'
 gem 'therubyracer',  platforms: :ruby
 gem 'uglifier'
 

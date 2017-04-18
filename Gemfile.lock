@@ -295,6 +295,9 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.7)
     timecop (0.8.1)
+    turbolinks (5.0.1)
+      turbolinks-source (~> 5)
+    turbolinks-source (5.0.0)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
     uglifier (3.2.0)
@@ -366,6 +369,7 @@ DEPENDENCIES
   therubyracer
   thin
   timecop
+  turbolinks
   uglifier
   unicorn
   vcr
